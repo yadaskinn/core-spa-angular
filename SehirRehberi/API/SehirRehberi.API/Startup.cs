@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using SehirRehberi.API.Data;
-
+using AutoMapper;
 namespace SehirRehberi.API
 {
     public class Startup
@@ -27,7 +21,11 @@ namespace SehirRehberi.API
         {
             //Hangi DB(UseSqlServer) kullancağımız ve appsettings deki connectionString kullnacağımızı belirttik. 
             services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddMvc();
+            services.AddAutoMapper();//automapper
+            services.AddMvc().AddJsonOptions(opt =>
+                {
+                    opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                });
             services.AddCors();
             services.AddScoped<IAppRepository, AppRepository>();
         }
