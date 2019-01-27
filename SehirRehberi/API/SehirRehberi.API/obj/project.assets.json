@@ -12539,12 +12539,15 @@
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
-      "projectUniqueName": "C:\\Users\\yadaskinn\\Documents\\SehirRehberi\\SehirRehberi\\API\\SehirRehberi.API\\SehirRehberi.API.csproj",
+      "projectUniqueName": "C:\\Users\\yadaskinn\\Documents\\SehirRehberi\\core-spa-angular\\SehirRehberi\\API\\SehirRehberi.API\\SehirRehberi.API.csproj",
       "projectName": "SehirRehberi.API",
-      "projectPath": "C:\\Users\\yadaskinn\\Documents\\SehirRehberi\\SehirRehberi\\API\\SehirRehberi.API\\SehirRehberi.API.csproj",
+      "projectPath": "C:\\Users\\yadaskinn\\Documents\\SehirRehberi\\core-spa-angular\\SehirRehberi\\API\\SehirRehberi.API\\SehirRehberi.API.csproj",
       "packagesPath": "C:\\Users\\yadaskinn\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yadaskinn\\Documents\\SehirRehberi\\SehirRehberi\\API\\SehirRehberi.API\\obj\\",
+      "outputPath": "C:\\Users\\yadaskinn\\Documents\\SehirRehberi\\core-spa-angular\\SehirRehberi\\API\\SehirRehberi.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
