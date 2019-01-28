@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+
+namespace SehirRehberi.API.Helpers
+{
+    public static class JwtExtension
+    {
+        public static void AddApplicationEror(this HttpResponse response, string message)
+        {
+            response.Headers.Add("Application-Error",message);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Headers.Add("Access-Control-Exponse-Headers", "Application-Error");
+
+        }
+
+    }
+}
