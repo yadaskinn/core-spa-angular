@@ -36,12 +36,15 @@ namespace SehirRehberi.API
                     opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
             services.AddCors();
-            services.AddScoped<IAppRepository, AppRepository>();
+            services.AddScoped<IAppRepository, AppRepository>();//eğer senden IAppRepository istenirse, ona AppRepository anlamında
+
+            services.AddScoped<IAuthRepository, AuthRepository>();
+
 
             //JWT 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
             {
-                opt.TokenValidationParameters= new TokenValidationParameters
+                opt.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),

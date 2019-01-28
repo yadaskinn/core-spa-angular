@@ -5054,15 +5054,6 @@
         "runtime": {
           "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {}
         }
-      },
-      "DaskinFramework.Core/1.0.0": {
-        "type": "project",
-        "compile": {
-          "bin/placeholder/DaskinFramework.Core.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/DaskinFramework.Core.dll": {}
-        }
       }
     }
   },
@@ -13182,18 +13173,12 @@
         "windowsazure.storage.8.1.4.nupkg.sha512",
         "windowsazure.storage.nuspec"
       ]
-    },
-    "DaskinFramework.Core/1.0.0": {
-      "type": "project",
-      "path": "../../../../../company/company/DaskinFramework/DaskinFramework.Core/DaskinFramework.Core.csproj",
-      "msbuildProject": "../../../../../company/company/DaskinFramework/DaskinFramework.Core/DaskinFramework.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "AutoMapper >= 7.0.1",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 5.0.1",
-      "DaskinFramework.Core >= 1.0.0",
       "Microsoft.AspNetCore.All >= 2.0.3",
       "Microsoft.NETCore.App >= 2.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.0"
@@ -13231,11 +13216,7 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "projectReferences": {
-            "C:\\Users\\yadaskinn\\Documents\\company\\company\\DaskinFramework\\DaskinFramework.Core\\DaskinFramework.Core.csproj": {
-              "projectPath": "C:\\Users\\yadaskinn\\Documents\\company\\company\\DaskinFramework\\DaskinFramework.Core\\DaskinFramework.Core.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
