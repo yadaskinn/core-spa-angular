@@ -8,6 +8,7 @@ using SehirRehberi.API.Data;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using SehirRehberi.API.Helpers;
 
 namespace SehirRehberi.API
 {
@@ -27,6 +28,9 @@ namespace SehirRehberi.API
             //appsettings de belirtik, token key bilgisini.
             var key = Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value);
 
+
+            //cloudinary konfigürasyon
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
 
             //Hangi DB(UseSqlServer) kullancağımız ve appsettings deki connectionString kullnacağımızı belirttik. 
             services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
