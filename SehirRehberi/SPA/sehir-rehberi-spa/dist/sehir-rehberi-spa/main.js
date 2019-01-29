@@ -41,7 +41,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-nav></app-nav>\r\n <app-value></app-value>"
+module.exports = "<app-nav></app-nav>\r\n <app-city></app-city>"
 
 /***/ }),
 
@@ -94,6 +94,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _value_value_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./value/value.component */ "./src/app/value/value.component.ts");
 /* harmony import */ var _nav_nav_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./nav/nav.component */ "./src/app/nav/nav.component.ts");
+/* harmony import */ var _city_city_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./city/city.component */ "./src/app/city/city.component.ts");
+
 
 
 
@@ -110,6 +112,7 @@ var AppModule = /** @class */ (function () {
                 _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
                 _value_value_component__WEBPACK_IMPORTED_MODULE_5__["ValueComponent"],
                 _nav_nav_component__WEBPACK_IMPORTED_MODULE_6__["NavComponent"],
+                _city_city_component__WEBPACK_IMPORTED_MODULE_7__["CityComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -120,6 +123,62 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/city/city.component.css":
+/*!*****************************************!*\
+  !*** ./src/app/city/city.component.css ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NpdHkvY2l0eS5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/city/city.component.html":
+/*!******************************************!*\
+  !*** ./src/app/city/city.component.html ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  city works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/city/city.component.ts":
+/*!****************************************!*\
+  !*** ./src/app/city/city.component.ts ***!
+  \****************************************/
+/*! exports provided: CityComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CityComponent", function() { return CityComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var CityComponent = /** @class */ (function () {
+    function CityComponent() {
+    }
+    CityComponent.prototype.ngOnInit = function () {
+    };
+    CityComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-city',
+            template: __webpack_require__(/*! ./city.component.html */ "./src/app/city/city.component.html"),
+            styles: [__webpack_require__(/*! ./city.component.css */ "./src/app/city/city.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], CityComponent);
+    return CityComponent;
 }());
 
 
