@@ -3,14 +3,13 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './route';
+import {NgxGalleryModule} from 'ngx-gallery'
 
 import { AppComponent } from './app.component';
 import { ValueComponent } from './value/value.component';
 import { NavComponent } from './nav/nav.component';
 import { CityComponent } from './city/city.component';
 import { CityDetailComponent } from './city-detail/city-detail.component';
-
-
 
 @NgModule({
   declarations: [
@@ -23,8 +22,8 @@ import { CityDetailComponent } from './city-detail/city-detail.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
-    
+    RouterModule.forRoot(appRoutes),
+    NgxGalleryModule
   ],
   providers: [],
   bootstrap: [AppComponent]
