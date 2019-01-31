@@ -27,9 +27,7 @@ export class CityDetailComponent implements OnInit {
 
 
   ngOnInit() {
-    debugger;
     this.activatedRoute.params.subscribe(params => {
-      debugger;
       this.getCityById(params["cityId"])
     })
   }
