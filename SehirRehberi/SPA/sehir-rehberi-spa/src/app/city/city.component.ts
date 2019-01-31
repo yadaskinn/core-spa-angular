@@ -15,7 +15,6 @@ export class CityComponent implements OnInit {
   cities:City[]
 
   ngOnInit() {
-    debugger;
 this.cityService.getCities().subscribe(data=>{
   this.cities=data;
 })
