@@ -16,12 +16,16 @@
         <a class="nav-link" routerLink="value" routerLinkActive="active" >Value</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
+        <a class="nav-link" routerLink="register" routerLinkActive="active" >Register</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+    <!-- form oluşturma -->
+    <form *ngIf="!isAuthenticated" #loginForm="ngForm" (ngSubmit)="login()" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="User Name" name="userName" [(ngModel)]="loginUser.userName" required>
+      <input class="form-control mr-sm-2" type="password" placeholder="Password" name="password"  [(ngModel)]="loginUser.password" required>
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit" [disabled]="!loginForm.valid">Login</button>
     </form>
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit" *ngIf="isAuthenticated" (click)="logout()" >Logut</button>
+
   </div>
 </nav>

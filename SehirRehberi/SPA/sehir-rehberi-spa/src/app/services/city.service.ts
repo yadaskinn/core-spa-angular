@@ -6,6 +6,8 @@ import { City } from '../models/city';
 import { Photo } from '../models/photo';
 import { Router } from '@angular/router';
 import { AlertifyService } from './alertify.service';
+import { environment } from 'src/environments/environment';
+// import {ApiConfig} from '../apiconfig';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +15,15 @@ import { AlertifyService } from './alertify.service';
 export class CityService {
 
   constructor(private httpClient: HttpClient,
-    private router:Router,
+    private router: Router,
     private alertifyService: AlertifyService,
-    ) {
+  ) {
 
   }
 
-  path = "http://localhost:49521/api/";
+  // path = "http://localhost:49521/api/";
+
+  path = environment.apiUrl;
 
   //City List
   getCities(): Observable<City[]> {
@@ -38,10 +42,10 @@ export class CityService {
 
   //Add City
   add(city) {
-    return this.httpClient.post(this.path + "cities/Add",city).subscribe(data=>{
+    return this.httpClient.post(this.path + "cities/Add", city).subscribe(data => {
       debugger;
       this.alertifyService.success("Şehir Eklendi");
-      return this.router.navigateByUrl('/citydetail/'+data["id"])
+      return this.router.navigateByUrl('/citydetail/' + data["id"])
     });
   }
 

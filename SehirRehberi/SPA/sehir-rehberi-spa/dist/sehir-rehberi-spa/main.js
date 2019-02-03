@@ -102,12 +102,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _city_detail_city_detail_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./city-detail/city-detail.component */ "./src/app/city-detail/city-detail.component.ts");
 /* harmony import */ var _city_city_add_city_add_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./city/city-add/city-add.component */ "./src/app/city/city-add/city-add.component.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _services_alertify_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./services/alertify.service */ "./src/app/services/alertify.service.ts");
 
 
 
 
 
 
+
+// import {ApiConfig} from './apiconfig';
 
 
 
@@ -127,7 +130,7 @@ var AppModule = /** @class */ (function () {
                 _nav_nav_component__WEBPACK_IMPORTED_MODULE_9__["NavComponent"],
                 _city_city_component__WEBPACK_IMPORTED_MODULE_10__["CityComponent"],
                 _city_detail_city_detail_component__WEBPACK_IMPORTED_MODULE_11__["CityDetailComponent"],
-                _city_city_add_city_add_component__WEBPACK_IMPORTED_MODULE_12__["CityAddComponent"],
+                _city_city_add_city_add_component__WEBPACK_IMPORTED_MODULE_12__["CityAddComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -135,9 +138,9 @@ var AppModule = /** @class */ (function () {
                 _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forRoot(_route__WEBPACK_IMPORTED_MODULE_5__["appRoutes"]),
                 ngx_gallery__WEBPACK_IMPORTED_MODULE_6__["NgxGalleryModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_13__["FormsModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_13__["ReactiveFormsModule"]
+                _angular_forms__WEBPACK_IMPORTED_MODULE_13__["ReactiveFormsModule"],
             ],
-            providers: [],
+            providers: [_services_alertify_service__WEBPACK_IMPORTED_MODULE_14__["AlertifyService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
         })
     ], AppModule);
@@ -199,9 +202,7 @@ var CityDetailComponent = /** @class */ (function () {
     }
     CityDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
-        debugger;
         this.activatedRoute.params.subscribe(function (params) {
-            debugger;
             _this.getCityById(params["cityId"]);
         });
     };
@@ -292,7 +293,7 @@ module.exports = "html,\r\nbody {\r\n  height: 100%;\r\n}\r\n\r\nbody {\r\n  dis
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<main role=\"main\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <!-- formgroupadd, gideceği metot -->\n      <form [formGroup]=\"cityAddForm\" (ngSubmit)=\"add()\" class=\"form-cityadd\">\n        <h2 class=\"mt-3 pt-3\">Yeni bir şehir ekle</h2>\n        <div class=\"form-group\">\n          <!-- name=>formControlName -->\n          <input type=\"text\" id=\"name\" formControlName=\"name\" class=\"form-control\" placeholder=\"Şehir adı\" autofocus>\n          <!-- hata mesajı ngIf ile kontrol ediliyor -->\n          <span class=\"help-block\" *ngIf=\"cityAddForm.get('name').hasError('required') && cityAddForm.get('name').touched\">\n            Şehir adı zorunludur\n          </span>\n        </div>\n        <div class=\"form-group\">\n          <app-ngx-editor class=\"form-control\" id=\"description\" name=\"description\" [placeholder]=\"'Buraya notlarınızı giriniz'\"\n            formControlName=\"description\" [spellcheck]=\"true\">\n          </app-ngx-editor>\n          <span class=\"help-block\" *ngIf=\"cityAddForm.get('description').hasError('required') && cityAddForm.get('description').touched\">\n            Not girmeniz zorunludur\n          </span>\n        </div>\n        <button type=\"submit\" class=\"btn btn-lg btn-primary btn-block\" [disabled]=\"!cityAddForm.valid\">Ekle</button>\n        <h6>{{cityAddForm.value|json}}</h6>\n        <h6>{{cityAddForm.status|json}}</h6>\n      </form>\n    </div>\n  </div>\n</main>"
+module.exports = "<main role=\"main\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <!-- formgroupadd, gideceği metot -->\n      <form [formGroup]=\"cityAddForm\" (ngSubmit)=\"add()\" class=\"form-cityadd\">\n        <h2 class=\"mt-3 pt-3\">Yeni bir şehir ekle</h2>\n        <div class=\"form-group\">\n          <!-- name=>formControlName -->\n          <input type=\"text\" id=\"name\" formControlName=\"name\" class=\"form-control\" placeholder=\"Şehir adı\" autofocus>\n          <!-- hata mesajı ngIf ile kontrol ediliyor -->\n          <span class=\"help-block\" *ngIf=\"cityAddForm.get('name').hasError('required') && cityAddForm.get('name').touched\">\n            Şehir adı zorunludur\n          </span>\n        </div>\n        <div class=\"form-group\">\n          <!-- <app-ngx-editor class=\"form-control\" id=\"description\" name=\"description\" [placeholder]=\"'Buraya notlarınızı giriniz'\"\n            formControlName=\"description\" [spellcheck]=\"true\">\n          </app-ngx-editor> -->\n          <input class=\"form-control\" id=\"description\" name=\"description\" [placeholder]=\"'Buraya notlarınızı giriniz'\"\n          formControlName=\"description\" [spellcheck]=\"true\"/>\n        \n          <span class=\"help-block\" *ngIf=\"cityAddForm.get('description').hasError('required') && cityAddForm.get('description').touched\">\n            Not girmeniz zorunludur\n          </span>\n        </div>\n        <button type=\"submit\" class=\"btn btn-lg btn-primary btn-block\" [disabled]=\"!cityAddForm.valid\">Ekle</button>\n        <h6>{{cityAddForm.value|json}}</h6>\n        <h6>{{cityAddForm.status|json}}</h6>\n      </form>\n    </div>\n  </div>\n</main>"
 
 /***/ }),
 
@@ -310,14 +311,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_services_city_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/city.service */ "./src/app/services/city.service.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var src_app_services_alertify_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/alertify.service */ "./src/app/services/alertify.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
 
 
 
 
 var CityAddComponent = /** @class */ (function () {
-    function CityAddComponent(cityServices, formBuilder) {
+    function CityAddComponent(cityServices, formBuilder, alertifyService, router) {
         this.cityServices = cityServices;
         this.formBuilder = formBuilder;
+        this.alertifyService = alertifyService;
+        this.router = router;
     }
     //form oluşturduk, form builder ile
     CityAddComponent.prototype.createCityForm = function () {
@@ -332,6 +339,7 @@ var CityAddComponent = /** @class */ (function () {
             this.city = Object.assign({}, this.cityAddForm.value);
             this.city.userId = 1; //Todo, kullanıcı sonradan alacağız.
             this.cityServices.add(this.city);
+            // this.router.navigateByUrl('/citydetail/')
         }
     };
     CityAddComponent.prototype.ngOnInit = function () {
@@ -345,7 +353,9 @@ var CityAddComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./city-add.component.css */ "./src/app/city/city-add/city-add.component.css")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_city_service__WEBPACK_IMPORTED_MODULE_2__["CityService"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"]])
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"],
+            src_app_services_alertify_service__WEBPACK_IMPORTED_MODULE_4__["AlertifyService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
     ], CityAddComponent);
     return CityAddComponent;
 }());
@@ -372,7 +382,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <!-- *ngFor ile for yaptık. -->\n    <div *ngFor=\"let city of cities\" class=\"col-md-4\">\n      <h2 class=\"mt-3 pt-3\" >{{city.name}}</h2>\n      <div class=\"card mb-4 shadow-sm\">\n          <img class=\"card-img-top\" src=\"{{city.photoUrl}}\" style=\"height: 300px; width: 100d;\" >\n        <div class=\"card-body\">\n          <p class=\"card-text\">{{city.description}}</p>\n          <div class=\"d-flex justify-content-between align-items-center\">\n            <div class=\"btn-group\">\n              <button type=\"button\" routerLink=\"/cityDetail/{{city.id}}\" class=\"btn btn-sm btn-outline-secondary\">Detay</button>\n              <button type=\"button\" class=\"btn btn-sm btn-outline-secondary\">Edit</button>\n            </div>\n            <small class=\"text-muted\">9 mins</small>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <!-- *ngFor ile for yaptık. -->\n    <div *ngFor=\"let city of cities\" class=\"col-md-4\">\n      <h2 class=\"mt-3 pt-3\" >{{city.name}}</h2>\n      <div class=\"card mb-4 shadow-sm\">\n          <img class=\"card-img-top\" src=\"{{city.photoUrl}}\" style=\"height: 300px; width: 100d;\" >\n        <div class=\"card-body\">\n          <p class=\"card-text\">{{city.description}}</p>\n          <div class=\"d-flex justify-content-between align-items-center\">\n            <div class=\"btn-group\">\n              <button type=\"button\" routerLink=\"/citydetail/{{city.id}}\" class=\"btn btn-sm btn-outline-secondary\">Detay</button>\n              <button type=\"button\" class=\"btn btn-sm btn-outline-secondary\">Edit</button>\n            </div>\n            <small class=\"text-muted\">9 mins</small>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -419,6 +429,46 @@ var CityComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/models/loginUser.ts":
+/*!*************************************!*\
+  !*** ./src/app/models/loginUser.ts ***!
+  \*************************************/
+/*! exports provided: LoginUser */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginUser", function() { return LoginUser; });
+var LoginUser = /** @class */ (function () {
+    function LoginUser() {
+    }
+    return LoginUser;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/models/registerUser.ts":
+/*!****************************************!*\
+  !*** ./src/app/models/registerUser.ts ***!
+  \****************************************/
+/*! exports provided: RegisterUser */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterUser", function() { return RegisterUser; });
+var RegisterUser = /** @class */ (function () {
+    function RegisterUser() {
+    }
+    return RegisterUser;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/nav/nav.component.css":
 /*!***************************************!*\
   !*** ./src/app/nav/nav.component.css ***!
@@ -437,7 +487,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-primary\">\n  <a class=\"navbar-brand\" href=\"#\">Navbar</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarColor01\" aria-controls=\"navbarColor01\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarColor01\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"city\" routerLinkActive=\"active\" >City <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"cityadd\" routerLinkActive=\"active\" >Value</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"value\" routerLinkActive=\"active\" >Şehir Ekle</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#\">About</a>\n      </li>\n    </ul>\n    <form class=\"form-inline my-2 my-lg-0\">\n      <input class=\"form-control mr-sm-2\" type=\"text\" placeholder=\"Search\">\n      <button class=\"btn btn-secondary my-2 my-sm-0\" type=\"submit\">Search</button>\n    </form>\n  </div>\n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-primary\">\n  <a class=\"navbar-brand\" href=\"#\">Navbar</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarColor01\" aria-controls=\"navbarColor01\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarColor01\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"city\" routerLinkActive=\"active\" >City <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"cityadd\" routerLinkActive=\"active\" >Şehir Ekle</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"value\" routerLinkActive=\"active\" >Value</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#\">About</a>\n      </li>\n    </ul>\n    <!-- form oluşturma -->\n    <form *ngIf=\"!isAuthenticated\" #loginForm=\"ngForm\" (ngSubmit)=\"login()\" class=\"form-inline my-2 my-lg-0\">\n      <input class=\"form-control mr-sm-2\" type=\"text\" placeholder=\"User Name\" name=\"userName\" [(ngModel)]=\"loginUser.userName\" required>\n      <input class=\"form-control mr-sm-2\" type=\"password\" placeholder=\"Password\" name=\"password\"  [(ngModel)]=\"loginUser.password\" required>\n      <button class=\"btn btn-secondary my-2 my-sm-0\" type=\"submit\" [disabled]=\"!loginForm.valid\">Login</button>\n    </form>\n  </div>\n</nav>"
 
 /***/ }),
 
@@ -453,20 +503,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavComponent", function() { return NavComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
+
 
 
 var NavComponent = /** @class */ (function () {
-    function NavComponent() {
+    function NavComponent(authService) {
+        this.authService = authService;
+        this.loginUser = {};
     }
     NavComponent.prototype.ngOnInit = function () {
     };
+    //login giriş işlemi
+    NavComponent.prototype.login = function () {
+        this.authService.login(this.loginUser);
+    };
+    //logout
+    NavComponent.prototype.logout = function () {
+        this.authService.logOut();
+    };
+    Object.defineProperty(NavComponent.prototype, "isAuthenticated", {
+        get: function () {
+            return this.authService.loggedIn();
+        },
+        enumerable: true,
+        configurable: true
+    });
     NavComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-nav',
             template: __webpack_require__(/*! ./nav.component.html */ "./src/app/nav/nav.component.html"),
             styles: [__webpack_require__(/*! ./nav.component.css */ "./src/app/nav/nav.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
     ], NavComponent);
     return NavComponent;
 }());
@@ -494,10 +563,154 @@ __webpack_require__.r(__webpack_exports__);
 //routing 
 var appRoutes = [
     { path: "city", component: _city_city_component__WEBPACK_IMPORTED_MODULE_0__["CityComponent"] },
-    { path: "cityDetail/:cityId", component: _city_detail_city_detail_component__WEBPACK_IMPORTED_MODULE_1__["CityDetailComponent"] },
+    { path: "citydetail/:cityId", component: _city_detail_city_detail_component__WEBPACK_IMPORTED_MODULE_1__["CityDetailComponent"] },
     { path: "cityadd", component: _city_city_add_city_add_component__WEBPACK_IMPORTED_MODULE_2__["CityAddComponent"] },
     { path: "**", redirectTo: "city", pathMatch: "full" },
 ];
+
+
+/***/ }),
+
+/***/ "./src/app/services/alertify.service.ts":
+/*!**********************************************!*\
+  !*** ./src/app/services/alertify.service.ts ***!
+  \**********************************************/
+/*! exports provided: AlertifyService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AlertifyService", function() { return AlertifyService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var AlertifyService = /** @class */ (function () {
+    function AlertifyService() {
+    }
+    AlertifyService.prototype.success = function (message) {
+        alertify.success(message);
+    };
+    AlertifyService.prototype.warning = function (message) {
+        alertify.warning(message);
+    };
+    AlertifyService.prototype.error = function (message) {
+        alertify.error(message);
+    };
+    AlertifyService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], AlertifyService);
+    return AlertifyService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/auth.service.ts":
+/*!******************************************!*\
+  !*** ./src/app/services/auth.service.ts ***!
+  \******************************************/
+/*! exports provided: AuthService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthService", function() { return AuthService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _models_loginUser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../models/loginUser */ "./src/app/models/loginUser.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var angular2_jwt__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! angular2-jwt */ "./node_modules/angular2-jwt/angular2-jwt.js");
+/* harmony import */ var angular2_jwt__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(angular2_jwt__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _alertify_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./alertify.service */ "./src/app/services/alertify.service.ts");
+/* harmony import */ var _models_registerUser__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../models/registerUser */ "./src/app/models/registerUser.ts");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+
+
+
+
+
+
+
+
+
+
+var AuthService = /** @class */ (function () {
+    function AuthService(httpClient, router, alertify) {
+        this.httpClient = httpClient;
+        this.router = router;
+        this.alertify = alertify;
+        this.path = src_environments_environment__WEBPACK_IMPORTED_MODULE_8__["environment"].apiUrl + "auth/";
+        this.jwtHelper = new angular2_jwt__WEBPACK_IMPORTED_MODULE_4__["JwtHelper"]();
+        this.TOKEN_KEY = "token";
+    }
+    //kullanıcı giriş
+    AuthService.prototype.login = function (loginUser) {
+        var _this = this;
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]();
+        headers = headers.append("Content-Type", "application/json");
+        this.httpClient.post(this.path + "Login", _models_loginUser__WEBPACK_IMPORTED_MODULE_2__["LoginUser"], { headers: headers }).subscribe(function (data) {
+            debugger;
+            _this.saveToken(data);
+            _this.userToken(data);
+            _this.decodedToken = _this.jwtHelper.decodeToken(data.toString());
+            _this.alertify.success("Sisteme giriş yapıldı.");
+            return _this.router.navigateByUrl('/city');
+        });
+    };
+    //kullanıcı kayıt.
+    AuthService.prototype.register = function (registerUser) {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]();
+        headers = headers.append("Content-Type", "application/json");
+        this.httpClient.post(this.path + "Register", _models_registerUser__WEBPACK_IMPORTED_MODULE_7__["RegisterUser"], { headers: headers }).subscribe(function (data) {
+            // debugger;
+            // this.saveToken(data['tokenString']);
+            // this.userToken(data['tokenString']);
+            // this.decodedToken = this.jwtHelper.decodeToken(data['tokenString']);
+            // this.alertify.success("Sisteme giriş yapıldı.");
+            // return this.router.navigateByUrl('/city');
+        });
+    };
+    //kullanıcı logout
+    AuthService.prototype.logOut = function () {
+        localStorage.removeItem(this.TOKEN_KEY);
+    };
+    //kullanıcı sistemde aktif mi
+    AuthService.prototype.loggedIn = function () {
+        return Object(angular2_jwt__WEBPACK_IMPORTED_MODULE_4__["tokenNotExpired"])(this.TOKEN_KEY);
+    };
+    //mevcut kullanıcı 
+    AuthService.prototype.getCurrentUserId = function () {
+        return this.jwtHelper.decodeToken(this.Token).nameid;
+    };
+    //token local storage kaydediyoruz.
+    AuthService.prototype.saveToken = function (token) {
+        localStorage.setItem(this.TOKEN_KEY, token);
+    };
+    Object.defineProperty(AuthService.prototype, "Token", {
+        //token
+        get: function () {
+            return localStorage.getItem(this.TOKEN_KEY);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    AuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"],
+            _alertify_service__WEBPACK_IMPORTED_MODULE_6__["AlertifyService"]])
+    ], AuthService);
+    return AuthService;
+}());
+
 
 
 /***/ }),
@@ -515,13 +728,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _alertify_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./alertify.service */ "./src/app/services/alertify.service.ts");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
 
 
 
+
+
+
+// import {ApiConfig} from '../apiconfig';
 var CityService = /** @class */ (function () {
-    function CityService(httpClient) {
+    function CityService(httpClient, router, alertifyService) {
         this.httpClient = httpClient;
-        this.path = "http://localhost:49521/api/";
+        this.router = router;
+        this.alertifyService = alertifyService;
+        // path = "http://localhost:49521/api/";
+        this.path = src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].apiUrl;
     }
     //City List
     CityService.prototype.getCities = function () {
@@ -537,13 +760,20 @@ var CityService = /** @class */ (function () {
     };
     //Add City
     CityService.prototype.add = function (city) {
-        return this.httpClient.post(this.path + "cities/Add", city).subscribe();
+        var _this = this;
+        return this.httpClient.post(this.path + "cities/Add", city).subscribe(function (data) {
+            debugger;
+            _this.alertifyService.success("Şehir Eklendi");
+            return _this.router.navigateByUrl('/citydetail/' + data["id"]);
+        });
     };
     CityService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
+            _alertify_service__WEBPACK_IMPORTED_MODULE_4__["AlertifyService"]])
     ], CityService);
     return CityService;
 }());
@@ -637,7 +867,8 @@ __webpack_require__.r(__webpack_exports__);
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 var environment = {
-    production: false
+    production: true,
+    apiUrl: "http://localhost:49521/api/"
 };
 /*
  * For easier debugging in development mode, you can import the following file
