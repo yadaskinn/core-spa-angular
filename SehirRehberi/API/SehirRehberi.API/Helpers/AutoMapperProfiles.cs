@@ -18,7 +18,10 @@ namespace SehirRehberi.API.Helpers
 
             CreateMap<City, CityForDetailDto>();//sehir için map
 
-            CreateMap<Photo, PhotoForCreationDto>();//fotoğraf için map
+            CreateMap<PhotoForCreationDto,Photo>();//fotoğraf için map
+            CreateMap<PhotoForReturnDto,Photo >();//fotoğraf için map
+
+
         }
 
 

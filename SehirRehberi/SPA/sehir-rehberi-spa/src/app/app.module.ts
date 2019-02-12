@@ -4,7 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './route';
 import {NgxGalleryModule} from 'ngx-gallery';
-
+import {NgxEditorModule} from 'ngx-editor';
+import { FileUploadModule } from 'ng2-file-upload';
 // import {ApiConfig} from './apiconfig';
 
 import { AppComponent } from './app.component';
@@ -16,6 +17,9 @@ import { CityAddComponent } from './city/city-add/city-add.component';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import {AlertifyService} from './services/alertify.service';
 import { RegisterComponent } from './register/register.component';
+// import { PhotoComponent } from './photo/photo.component';
+
+
 
 @NgModule({
   declarations: [
@@ -25,7 +29,8 @@ import { RegisterComponent } from './register/register.component';
     CityComponent,
     CityDetailComponent,
     CityAddComponent,
-    RegisterComponent
+    RegisterComponent,
+    // PhotoComponent
     
   ],
   imports: [
@@ -35,7 +40,8 @@ import { RegisterComponent } from './register/register.component';
     NgxGalleryModule,
     FormsModule,
     ReactiveFormsModule,
-    // ApiConfig
+    NgxEditorModule,
+    FileUploadModule,
   ],
   providers: [AlertifyService],
   bootstrap: [AppComponent]

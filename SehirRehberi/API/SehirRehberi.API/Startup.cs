@@ -9,11 +9,13 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using SehirRehberi.API.Helpers;
+using System.IO;
 
 namespace SehirRehberi.API
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -25,6 +27,16 @@ namespace SehirRehberi.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            //#region  winServerProperties
+            //services.Configure<IISOptions>(options =>
+            //          {
+            //              options.AutomaticAuthentication = false;
+            //          });
+
+            //#endregion
+
+
             //appsettings de belirtik, token key bilgisini.
             var key = Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value);
 
@@ -56,7 +68,7 @@ namespace SehirRehberi.API
                     ValidateAudience = false //kullanıcıyı doğrulama
                 };
             });
-
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

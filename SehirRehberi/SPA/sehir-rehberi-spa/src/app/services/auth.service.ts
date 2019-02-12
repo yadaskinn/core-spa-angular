@@ -49,12 +49,13 @@ export class AuthService {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
     this.httpClient.post(this.path + "Register", registerUser, { headers }).subscribe(data => {
-      // debugger;
+      debugger;
       // this.saveToken(data['tokenString']);
-      // this.userToken(data['tokenString']);
+      // this.userToken=data['tokenString'];
       // this.decodedToken = this.jwtHelper.decodeToken(data['tokenString']);
       // this.alertify.success("Sisteme giriş yapıldı.");
       // return this.router.navigateByUrl('/city');
+    return this.alertify.success("Sisteme kayıt oldunuz.");
     })
   }
 

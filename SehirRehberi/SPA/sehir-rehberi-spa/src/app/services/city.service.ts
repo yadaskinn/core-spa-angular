@@ -37,7 +37,8 @@ export class CityService {
 
   //Get City Photo Info
   getPhotosByCity(cityId): Observable<Photo> {
-    return this.httpClient.get<Photo>(this.path + "cities/Photos/?id=" + cityId)
+    debugger;
+    return this.httpClient.get<Photo>(this.path + "cities/Photos/?cityId=" + cityId)
   }
 
   //Add City

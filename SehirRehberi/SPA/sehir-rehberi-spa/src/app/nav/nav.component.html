@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="#">Şehir Rehberi</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,7 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="city" routerLinkActive="active" >City <span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="city" routerLinkActive="active" >Şehirler <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="cityadd" routerLinkActive="active" >Şehir Ekle</a>
@@ -16,16 +16,16 @@
         <a class="nav-link" routerLink="value" routerLinkActive="active" >Value</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="register" routerLinkActive="active" >Register</a>
+        <a class="nav-link" routerLink="register" routerLinkActive="active" >Kayıt Ol</a>
       </li>
     </ul>
     <!-- form oluşturma -->
     <form *ngIf="!isAuthenticated" #loginForm="ngForm" (ngSubmit)="login()" class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="User Name" name="userName" [(ngModel)]="loginUser.userName" required>
       <input class="form-control mr-sm-2" type="password" placeholder="Password" name="password"  [(ngModel)]="loginUser.password" required>
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit" [disabled]="!loginForm.valid">Login</button>
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit" [disabled]="!loginForm.valid">Giriş</button>
     </form>
-    <button class="btn btn-secondary my-2 my-sm-0" type="submit" *ngIf="isAuthenticated" (click)="logout()" >Logut</button>
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit" *ngIf="isAuthenticated" (click)="logout()" >Çıkış</button>
 
   </div>
 </nav>
