@@ -13,4 +13,5 @@
     </div>
   </div>
 </main>
-<!-- <app-photo></app-photo> -->
+<!-- oturum açılmış ise fotoğraf yüklenebilecek?-->
+<app-photo *ngIf="isAuthenticated" ></app-photo>

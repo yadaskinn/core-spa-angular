@@ -17,7 +17,7 @@ import { CityAddComponent } from './city/city-add/city-add.component';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import {AlertifyService} from './services/alertify.service';
 import { RegisterComponent } from './register/register.component';
-// import { PhotoComponent } from './photo/photo.component';
+import { PhotoComponent } from './photo/photo.component';
 
 
 
@@ -30,7 +30,7 @@ import { RegisterComponent } from './register/register.component';
     CityDetailComponent,
     CityAddComponent,
     RegisterComponent,
-    // PhotoComponent
+    PhotoComponent
     
   ],
   imports: [

@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { AlertifyService } from './alertify.service';
 import { RegisterUser } from '../models/registerUser';
 import { environment } from 'src/environments/environment';
+import { error } from '@angular/compiler/src/util';
 
 
 
@@ -39,6 +40,9 @@ export class AuthService {
       this.decodedToken = this.jwtHelper.decodeToken(data.toString());
       this.alertify.success("Sisteme giriş yapıldı.");
       return this.router.navigateByUrl('/city');
+    },error=>{
+      debugger;
+      this.alertify.error("Kullanıcı adı veya şifreniz hatalıdır.");
     })
 
   }

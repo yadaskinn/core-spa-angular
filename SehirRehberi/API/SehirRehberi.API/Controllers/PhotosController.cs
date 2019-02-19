@@ -17,7 +17,7 @@ using SehirRehberi.API.Models;
 namespace SehirRehberi.API.Controllers
 {
     [Produces("application/json")]
-    [Route("api/cities/{userId}/Photos")]
+    [Route("api/cities/{cityId}/Photos")]
     public class PhotosController : Controller
     {
         private IAppRepository _appRepository;
@@ -53,7 +53,7 @@ namespace SehirRehberi.API.Controllers
 
             if (currentUserId != city.UserId)
             {
-                return Unauthorized();
+                return BadRequest("Bu şehire fotoğraf ekleyemezsiniz.");
             }
 
             var file = photoForCreationDto.File;

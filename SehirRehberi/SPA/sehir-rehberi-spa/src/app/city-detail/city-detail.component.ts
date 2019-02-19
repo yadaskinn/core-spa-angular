@@ -4,6 +4,7 @@ import { CityService } from '../services/city.service';
 import { City } from '../models/city';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
 import { Photo } from '../models/photo';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-city-detail',
@@ -13,7 +14,8 @@ import { Photo } from '../models/photo';
 })
 export class CityDetailComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute, private cityServices: CityService) { }
+  constructor(private activatedRoute: ActivatedRoute, private cityServices: CityService,
+    private authService: AuthService,) { }
 
   //city modeli
   city: City;
@@ -88,5 +90,8 @@ export class CityDetailComponent implements OnInit {
     this.galleryImages = this.getImages();
   }
 
+  get isAuthenticated() {
+    return this.authService.loggedIn();
+  }
 
 }
