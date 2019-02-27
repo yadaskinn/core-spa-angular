@@ -68,7 +68,7 @@ namespace SehirRehberi.API
                     ValidateAudience = false //kullanıcıyı doğrulama
                 };
             });
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -81,7 +81,19 @@ namespace SehirRehberi.API
 
             app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
             app.UseAuthentication();
-            app.UseMvc();
+
+            //routing dotnet core 
+            app.UseMvc(routes =>
+                {
+                    routes.MapRoute(
+                        name: "default",
+                        template: "{controller=Home}/{action=Index}/{id?}");
+
+                    routes.MapRoute(
+                        name: "spa-fallback",
+                        template: "{*url}",
+                        defaults: new { controller = "Home", action = "Index" });
+                });
         }
     }
 }
