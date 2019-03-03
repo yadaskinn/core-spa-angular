@@ -111,6 +111,7 @@ node_modules/**
 *.sbr
 *.scc
 *.DotSettings
+*.json
 [Bb]in
 [Dd]ebug*/**
 obj/
