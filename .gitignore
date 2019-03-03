@@ -133,3 +133,5 @@ packages/**
 
 # Visual Studio 2015
 .vs/
+/SehirRehberi/API/SehirRehberi.API/Properties/PublishProfiles/FolderProfile.pubxml
+/SehirRehberi/SPA/sehir-rehberi-spa/node_modules
