@@ -80,9 +80,6 @@ export class AuthService {
     return this.jwtHelper.decodeToken(this.Token).nameid
   }
 
-
-
-
   //token local storage kaydediyoruz.
   saveToken(token) {
     localStorage.setItem(this.TOKEN_KEY, token)

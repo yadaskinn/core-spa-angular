@@ -7,6 +7,7 @@ import { Photo } from '../models/photo';
 import { Router } from '@angular/router';
 import { AlertifyService } from './alertify.service';
 import { environment } from 'src/environments/environment';
+import { ServiceResult } from '../models/serviceResult';
 // import {ApiConfig} from '../apiconfig';
 
 @Injectable({
@@ -26,8 +27,8 @@ export class CityService {
   path = environment.apiUrl;
 
   //City List
-  getCities(): Observable<City[]> {
-    return this.httpClient.get<City[]>(this.path + "cities")
+  getCities(): Observable<any> {
+    return this.httpClient.get<any>(this.path + "cities")
   }
 
   //Get City Info

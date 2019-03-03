@@ -20,4 +20,8 @@ export class AlertifyService {
   error(message: string) {
     alertify.error(message);
   }
+  ccc(message:string)
+  {
+    alertify.ccc(message)
+  }
 }

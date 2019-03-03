@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SehirRehberi.API", "SehirRehberi.API\SehirRehberi.API.csproj", "{739DEC73-2F20-40CE-BB42-51E5D5BECF7E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{F27369D8-8D9B-4A34-80E6-87D5837047BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{739DEC73-2F20-40CE-BB42-51E5D5BECF7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{739DEC73-2F20-40CE-BB42-51E5D5BECF7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{739DEC73-2F20-40CE-BB42-51E5D5BECF7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F27369D8-8D9B-4A34-80E6-87D5837047BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F27369D8-8D9B-4A34-80E6-87D5837047BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F27369D8-8D9B-4A34-80E6-87D5837047BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F27369D8-8D9B-4A34-80E6-87D5837047BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

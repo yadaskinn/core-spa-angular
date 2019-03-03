@@ -21,6 +21,7 @@ import { PhotoComponent } from './photo/photo.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

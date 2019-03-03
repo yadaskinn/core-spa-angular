@@ -8,6 +8,7 @@ using SehirRehberi.API.Data;
 using SehirRehberi.API.Dtos;
 using AutoMapper;
 using SehirRehberi.API.Models;
+using Model.ServiceResult;
 
 namespace SehirRehberi.API.Controllers
 {
@@ -23,7 +24,7 @@ namespace SehirRehberi.API.Controllers
             _mapper = mapper;
         }
 
-        public ActionResult GetCities()
+        public ServiceResult<CityForListDto> GetCities()
         {
             //var cities = _appRepository.GetCities().Select(c=> new CityForListDto
             //{
@@ -37,7 +38,14 @@ namespace SehirRehberi.API.Controllers
             var cities = _appRepository.GetCities();
             var citiesToReturn = _mapper.Map<List<CityForListDto>>(cities);
 
-            return Ok(citiesToReturn) ;
+            return new ServiceResult<CityForListDto>()
+            {
+                ResultList = citiesToReturn,
+                State = ServiceResultStates.SUCCESS
+            };
+
+
+            //  return Ok(citiesToReturn) ;
         }
 
         [HttpPost]
